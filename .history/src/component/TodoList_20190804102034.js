@@ -3,7 +3,7 @@ import { Input, Button, List } from 'antd';
 import 'antd/dist/antd.css';
 
 export default function TodoList(props) {
-  const { inputValue, onChange, onAddItem, onDeleteItem, data } = props
+  const { inputValue, onChange, onAddItem, onCHANGE_VALUE, data } = props
   return (
     <div>
       <Input placeholder={inputValue}
@@ -18,7 +18,8 @@ export default function TodoList(props) {
         dataSource={data}
         renderItem={(item, index) => (
           <List.Item
-            onClick={() => onDeleteItem(index)}>
+            onClick={() => onCHANGE_VALUE(index)}
+          >
             {item}
           </List.Item>
         )}

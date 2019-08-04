@@ -1,8 +1,9 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTodoList, changValue, addValue, deleteItem  } from './action'
+import { getTodoList } from './action/creators'
 import TodoList from './component/TodoList'
+import { changValue, addValue, deleteItem } from './constant'
 import store from './store'
 import './App.css';
 
@@ -10,19 +11,21 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {}
+
   }
-  
   componentDidMount() {
-    this.props.onGetList()
+    const action = getTodoList()
+    store.dispatch(action)
   }
 
   render() {
     const { data, inputValue } = this.props
+    console.log('app')
     return (
       <div>
         <TodoList inputValue={inputValue}
           onChange={this.props.onChange}
-          onAddItem={this.props.onAddItem}
+          onAddItem = {this.props.onAddItem}
           onDeleteItem={this.props.onDeleteItem}
           data={data}
         />
@@ -39,9 +42,6 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetList() {
-      dispatch(getTodoList())
-    },
     onChange(e) {
       dispatch(changValue(e.target.value))
     },

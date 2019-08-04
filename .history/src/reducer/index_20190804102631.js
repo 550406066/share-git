@@ -1,5 +1,5 @@
 
-import { CHANGE_VALUE, ADD_ITEM, DELETE_ITEM, GET_LIST } from '../constant'
+import { CHANGE_VALUE, ADD_ITEM, DELETEITEM, GET_LIST } from '../constant'
 const initState = {
     inputValue: '输入文字',
     data: [
@@ -19,7 +19,7 @@ export default (state = initState, action) => {
                 ...state,
                 inputValue: '',
             }
-        case DELETE_ITEM:
+        case DELETEITEM:
             return {
                 ...state,
                 data: state.data.filter((item, index) => index !== action.payload)

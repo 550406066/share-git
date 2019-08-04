@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTodoList, changValue, addValue, deleteItem  } from './action'
 import TodoList from './component/TodoList'
+import { } from './constant'
 import store from './store'
 import './App.css';
 

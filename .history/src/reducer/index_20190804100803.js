@@ -1,5 +1,6 @@
 
-import { CHANGE_VALUE, ADD_ITEM, DELETE_ITEM, GET_LIST } from '../constant'
+import { combineReducers } from 'redux'
+import { CHANGEVALUE, ADDITEM, DELETEITEM, GET_LIST } from '../constant'
 const initState = {
     inputValue: '输入文字',
     data: [
@@ -8,31 +9,28 @@ const initState = {
 
 export default (state = initState, action) => {
     switch (action.type) {
-        case CHANGE_VALUE:
+        case CHANGEVALUE:
             return {
                 ...state,
                 inputValue: action.payload
             }
-        case ADD_ITEM:
+        case ADDITEM:
             state.data.push(state.inputValue)
             return {
                 ...state,
                 inputValue: '',
             }
-        case DELETE_ITEM:
+        case DELETEITEM:
+            console.log(action.payload)
             return {
                 ...state,
-                data: state.data.filter((item, index) => index !== action.payload)
+                data: state.data.filter((item, index) => { index !== action.payload })
             }
         case GET_LIST:
             return {
                 ...state,
                 data: action.payload
             }
-            default:
-                return {
-                    ...state
-                }
     }
     return state
 }

@@ -18,7 +18,8 @@ export default function TodoList(props) {
         dataSource={data}
         renderItem={(item, index) => (
           <List.Item
-            onClick={() => onDeleteItem(index)}>
+            onClick={() => onDeleteItem(index)}
+          >
             {item}
           </List.Item>
         )}
